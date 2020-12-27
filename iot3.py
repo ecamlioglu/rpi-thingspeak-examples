@@ -11,8 +11,8 @@ GPIO.setwarnings(False)
 TRIG_pin = 23
 ECHO_pin = 24
 
-GPIO.setup(TRIG,GPIO.OUT)
-GPIO.setup(ECHO,GPIO.IN)
+GPIO.setup(TRIG_pin,GPIO.OUT)
+GPIO.setup(ECHO_pin,GPIO.IN)
 
 mySecretApi = "QA2QAZKK8UVQPM02"
 baseURL = 'https://api.thingspeak.com/update?api_key=%s' % mySecretApi 
@@ -35,14 +35,14 @@ while True:
 
         # hcsr-04 code block
 
-        GPIO.output(TRIG, True)
+        GPIO.output(TRIG_pin, True)
         time.sleep(0.00001)
-        GPIO.output(TRIG, False)
+        GPIO.output(TRIG_pin, False)
 
-        while GPIO.input(ECHO)==0:
+        while GPIO.input(ECHO_pin)==0:
             pulse_start = time.time()
 
-        while GPIO.input(ECHO)==1:
+        while GPIO.input(ECHO_pin)==1:
             pulse_end = time.time()
 
         pulse_duration = pulse_end - pulse_start
