@@ -31,6 +31,7 @@ while True:
         temperature_f = temperature_c * (9 / 5) + 32
         humidity = dhtDevice.humidity
         temp = "%.2f" % temperature_c
+        temp_f = "%.2f" % temperature_f
         humi = "%.2f" % humidity
 
         # hcsr-04 code block
@@ -56,7 +57,7 @@ while True:
         else:
             real_distance = 0
             print ("Menzil asildi")
-        conn = urllib.request.urlopen(baseURL + "&field1=%s&field2=%s&field3=%s" % (temp, humi, real_distance))
+        conn = urllib.request.urlopen(baseURL + "&field1=%s&field2=%s&field3=%s&field4=%s" % (temp, humi, real_distance,temp_f))
         print(
             "Temp: {:.1f} F / {:.1f} C    Humidity: {}% ".format(
                 temperature_f, temperature_c, humidity
