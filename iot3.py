@@ -1,8 +1,18 @@
 import sys
 import time
 import board
+import RPi.GPIO as GPIO
 import adafruit_dht
 import urllib.request
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+
+
+TRIG_pin = 23
+ECHO_pin = 24
+
+GPIO.setup(TRIG,GPIO.OUT)
+GPIO.setup(ECHO,GPIO.IN)
 
 mySecretApi = "QA2QAZKK8UVQPM02"
 baseURL = 'https://api.thingspeak.com/update?api_key=%s' % mySecretApi 
@@ -22,7 +32,31 @@ while True:
         humidity = dhtDevice.humidity
         temp = "%.2f" % temperature_c
         humi = "%.2f" % humidity
-        conn = urllib.request.urlopen(baseURL + "&field1=%s&field2=%s" % (temp, humi))
+
+        # hcsr-04 code block
+
+        GPIO.output(TRIG, True)
+        time.sleep(0.00001)
+        GPIO.output(TRIG, False)
+
+        while GPIO.input(ECHO)==0:
+            pulse_start = time.time()
+
+        while GPIO.input(ECHO)==1:
+            pulse_end = time.time()
+
+        pulse_duration = pulse_end - pulse_start
+
+        distance = pulse_duration * 17150
+        distance = round(distance, 2)
+        real_distance = 0.0
+        if distance > 2 and distance < 400:
+            real_distance = distance - 0.5
+            print ("Mesafe:",distance - 0.5,"cm")
+        else:
+            real_distance = 0
+            print ("Menzil asildi")
+        conn = urllib.request.urlopen(baseURL + "&field1=%s&field2=%s&field3=%s" % (temp, humi, real_distance))
         print(
             "Temp: {:.1f} F / {:.1f} C    Humidity: {}% ".format(
                 temperature_f, temperature_c, humidity
