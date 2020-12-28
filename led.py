@@ -10,7 +10,7 @@ baseURL = 'https://api.thingspeak.com/update?api_key=%s' % myAPI
 
 try:
     while True:
-        GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(GPIO.BCM)
         GPIO.setwarnings(False)
         GPIO.setup(18,GPIO.OUT)
         GPIO.setup(15,GPIO.OUT)
