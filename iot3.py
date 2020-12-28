@@ -34,6 +34,7 @@ while True:
         temp_f = "%.2f" % temperature_f
         humi = "%.2f" % humidity
         #LED
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(15,GPIO.OUT)
         GPIO.setup(18,GPIO.OUT)
         GPIO.setup(16,GPIO.OUT)
@@ -88,5 +89,8 @@ while True:
     except Exception as error:
         dhtDevice.exit()
         raise error
+    except KeyboardInterrupt:
+    GPIO.cleanup()
+    sys.exit(0)
 
     time.sleep(0.2)
