@@ -21,8 +21,8 @@ try:
         p_avg = 600
 
         if p_avg > 500:
-            GPIO.output(18, GPIO.HIGH)
-            GPIO.output(15, GPIO.HIGH)
+            #GPIO.output(18, GPIO.HIGH)
+            #GPIO.output(15, GPIO.HIGH)
             GPIO.output(16, GPIO.HIGH)
             value=1
             value_1=value
