@@ -90,7 +90,7 @@ while True:
         dhtDevice.exit()
         raise error
     except KeyboardInterrupt:
-    GPIO.cleanup()
-    sys.exit(0)
+        GPIO.cleanup()
+        sys.exit(0)
 
     time.sleep(0.2)
