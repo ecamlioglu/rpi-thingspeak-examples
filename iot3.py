@@ -6,6 +6,7 @@ import adafruit_dht
 import urllib.request
 #GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
 
 
 TRIG_pin = 23
@@ -34,7 +35,6 @@ while True:
         temp_f = "%.2f" % temperature_f
         humi = "%.2f" % humidity
         #LED
-        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(15,GPIO.OUT)
         GPIO.setup(18,GPIO.OUT)
         GPIO.setup(16,GPIO.OUT)
