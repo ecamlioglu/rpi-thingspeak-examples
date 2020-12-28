@@ -4,7 +4,7 @@ import board
 import RPi.GPIO as GPIO
 import adafruit_dht
 import urllib.request
-GPIO.setmode(GPIO.BCM)
+#GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 
