@@ -36,8 +36,7 @@ while True:
         humi = "%.2f" % humidity
         #LED
         GPIO.setup(22,GPIO.OUT)
-        print (temperature_f)
-        if temperature_f > 20:
+        if temperature_c > 20:
             GPIO.output(22, GPIO.HIGH)
             value=1
             value_1=value
