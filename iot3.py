@@ -33,7 +33,16 @@ while True:
         temp = "%.2f" % temperature_c
         temp_f = "%.2f" % temperature_f
         humi = "%.2f" % humidity
-
+        #LED
+        GPIO.setup(15,GPIO.OUT)
+        if temp > 20:
+            GPIO.output(15, GPIO.HIGH)
+            value=1
+            value_1=value
+        else:
+            GPIO.output(15, GPIO.LOW)
+            value=0
+            value_1=value
         # hcsr-04 code block
 
         GPIO.output(TRIG_pin, True)
@@ -57,7 +66,7 @@ while True:
         else:
             real_distance = 0
             print ("Menzil asildi")
-        conn = urllib.request.urlopen(baseURL + "&field1=%s&field2=%s&field3=%s&field4=%s" % (temp, humi, real_distance,temp_f))
+        conn = urllib.request.urlopen(baseURL + "&field1=%s&field2=%s&field3=%s&field4=%s&field5=%s" % (temp, humi, real_distance,temp_f, value_1))
         print(
             "Temp: {:.1f} F / {:.1f} C    Humidity: {}% ".format(
                 temperature_f, temperature_c, humidity
