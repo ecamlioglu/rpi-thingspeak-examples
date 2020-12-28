@@ -35,12 +35,18 @@ while True:
         humi = "%.2f" % humidity
         #LED
         GPIO.setup(15,GPIO.OUT)
+        GPIO.setup(18,GPIO.OUT)
+        GPIO.setup(16,GPIO.OUT)
         if temperature_f > 20:
             GPIO.output(15, GPIO.HIGH)
+            GPIO.output(16, GPIO.HIGH)
+            GPIO.output(18, GPIO.HIGH)
             value=1
             value_1=value
         else:
             GPIO.output(15, GPIO.LOW)
+            GPIO.output(16, GPIO.LOW)
+            GPIO.output(18, GPIO.LOW)
             value=0
             value_1=value
         # hcsr-04 code block
