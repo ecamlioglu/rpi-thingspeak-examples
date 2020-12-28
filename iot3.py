@@ -4,9 +4,10 @@ import board
 import RPi.GPIO as GPIO
 import adafruit_dht
 import urllib.request
-#GPIO.setmode(GPIO.BCM)
+#GPIO.cleanup()
+GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BOARD)
+# GPIO.setmode(GPIO.BOARD)
 
 
 TRIG_pin = 23
