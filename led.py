@@ -1,5 +1,4 @@
 import RPi.GPIO as GPIO
-from ldr_pr import LDR
 import sys
 import urllib.request
 from time import sleep
