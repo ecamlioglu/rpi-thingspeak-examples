@@ -68,7 +68,7 @@ while True:
             print ("Menzil asildi")
         conn = urllib.request.urlopen(baseURL + "&field1=%s&field2=%s&field3=%s&field4=%s&field5=%s" % (temp, humi, real_distance,temp_f, value_1))
         print(
-            "Temp: {:.1f} F / {:.1f} C    Humidity: {}% ".format(
+            "Temp: {:.1f} F / {:.1f} C    Humidity: {}% Led: {}% ".format(
                 temperature_f, temperature_c, humidity, value_1
             ) 
         )
